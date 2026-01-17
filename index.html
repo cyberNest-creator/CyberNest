@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CyberNest — Build Skills. Replace Barriers.</title>
+  <meta name="description" content="CyberNest is an independent educational initiative building products that help students learn IELTS, SAT, coding, and the application process—without expensive consulting." />
+
+  <style>
+    :root{
+      --bg:#070A12;
+      --card:#0C1120;
+      --card2:#0B1328;
+      --text:#EAF0FF;
+      --muted:#A7B3D6;
+      --line:rgba(255,255,255,.08);
+      --brand:#7C5CFF;
+      --brand2:#2EE59D;
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1120px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font);
+      background:
+        radial-gradient(900px 700px at 15% 10%, rgba(124,92,255,.18), transparent 60%),
+        radial-gradient(900px 700px at 85% 20%, rgba(46,229,157,.14), transparent 55%),
+        radial-gradient(1200px 900px at 50% 110%, rgba(124,92,255,.10), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      letter-spacing:.2px;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(7,10,18,.55);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; gap:10px; align-items:center;
+      font-weight:750; letter-spacing:.4px;
+    }
+    .logo{
+      width:34px; height:34px; border-radius:12px;
+      background:
+        radial-gradient(16px 16px at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,0) 60%),
+        linear-gradient(135deg, var(--brand), rgba(46,229,157,.65));
+      box-shadow: 0 12px 30px rgba(124,92,255,.25);
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .brand span{opacity:.95}
+    .links{display:flex; gap:18px; align-items:center}
+    .links a{
+      color:var(--muted);
+      font-size:14px;
+      padding:8px 10px;
+      border-radius:12px;
+      transition:.15s ease;
+    }
+    .links a:hover{color:var(--text); background:rgba(255,255,255,.06)}
+    .cta{
+      display:flex; gap:10px; align-items:center;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:14px;
+      padding:10px 14px;
+      font-weight:650;
+      font-size:14px;
+      background:rgba(255,255,255,.04);
+      transition:.15s ease;
+      cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.07)}
+    .btn.primary{
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--brand), rgba(46,229,157,.9));
+      color:#07101a;
+      box-shadow: 0 18px 40px rgba(124,92,255,.20);
+    }
+    .btn.primary:hover{filter:saturate(1.05); transform:translateY(-1px)}
+    .hero{
+      padding:70px 0 35px;
+    }
+    .grid-hero{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:26px;
+      align-items:stretch;
+    }
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      color:var(--muted);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:13px;
+      width:fit-content;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: var(--brand2);
+      box-shadow: 0 0 0 6px rgba(46,229,157,.10);
+    }
+    h1{
+      margin:14px 0 10px;
+      font-size:48px;
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    .sub{
+      margin:0 0 20px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.6;
+      max-width: 62ch;
+    }
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap}
+    .panel{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+      min-height: 280px;
+    }
+    .panel::before{
+      content:"";
+      position:absolute; inset:-80px -60px auto auto;
+      width:220px; height:220px;
+      background: radial-gradient(circle at 40% 40%, rgba(124,92,255,.30), transparent 62%);
+      filter: blur(2px);
+    }
+    .metrics{
+      display:grid; gap:12px;
+    }
+    .metric{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px;
+      background:rgba(7,10,18,.35);
+    }
+    .metric .t{font-size:12px; color:var(--muted)}
+    .metric .v{font-size:18px; font-weight:750; margin-top:6px}
+    .metric .s{font-size:12px; color:var(--muted); margin-top:6px; line-height:1.45}
+    .section{
+      padding:38px 0;
+    }
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:18px;
+      margin-bottom:16px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size:26px;
+      letter-spacing:-.3px;
+    }
+    .section-title p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      max-width:60ch;
+      line-height:1.5;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:16px;
+    }
+    .card{
+      grid-column: span 4;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      padding:18px;
+      box-shadow: 0 18px 45px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+      min-height: 210px;
+    }
+    .card::after{
+      content:"";
+      position:absolute; inset:auto -40px -40px auto;
+      width:180px; height:180px;
+      background: radial-gradient(circle at 30% 30%, rgba(46,229,157,.20), transparent 62%);
+      filter: blur(1px);
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius:999px;
+      padding:7px 10px;
+      font-size:12px;
+      color:var(--muted);
+      width:fit-content;
+    }
+    .tag .mini{
+      width:7px; height:7px; border-radius:999px; background:var(--brand);
+      box-shadow: 0 0 0 5px rgba(124,92,255,.12);
+    }
+    .card h3{
+      margin:12px 0 8px;
+      font-size:18px;
+      letter-spacing:-.2px;
+    }
+    .card p{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+    }
+    .bullets{
+      margin:0; padding-left: 18px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+    }
+    .card .row{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+      margin-top:14px;
+      position:relative; z-index:2;
+    }
+    .card .ghost{
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:12px;
+      padding:9px 12px;
+      background:rgba(255,255,255,.03);
+      font-size:13px;
+      font-weight:650;
+      color:var(--text);
+      transition:.15s ease;
+      cursor:pointer;
+    }
+    .card .ghost:hover{transform:translateY(-1px); background:rgba(255,255,255,.06)}
+    .card .ghost[disabled]{opacity:.45; cursor:not-allowed}
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+    }
+    .box{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:18px;
+      background: rgba(255,255,255,.03);
+    }
+    .box h3{margin:0 0 10px; font-size:16px}
+    .box p{margin:0; color:var(--muted); line-height:1.6; font-size:14px}
+
+    .footer{
+      padding:28px 0 40px;
+      border-top:1px solid var(--line);
+      margin-top:18px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .footer .frow{
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      align-items:center;
+    }
+    .pill{
+      border:1px solid var(--line);
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.02);
+    }
+
+    /* responsive */
+    @media (max-width: 980px){
+      .grid-hero{grid-template-columns: 1fr}
+      h1{font-size:40px}
+      .card{grid-column: span 6}
+      .two-col{grid-template-columns: 1fr}
+    }
+    @media (max-width: 640px){
+      .links{display:none}
+      h1{font-size:34px}
+      .card{grid-column: span 12}
+      .hero{padding-top:44px}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="CyberNest Home">
+          <div class="logo" aria-hidden="true"></div>
+          <span>CyberNest</span>
+        </a>
+
+        <div class="links" aria-label="Primary navigation">
+          <a href="#about">About</a>
+          <a href="#products">Products</a>
+          <a href="#vision">Vision</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="cta">
+          <a class="btn" href="#products">Explore</a>
+          <a class="btn primary" href="#contact">Partner / Collaborate</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <main id="top" class="hero">
+    <div class="wrap">
+      <div class="grid-hero">
+        <div>
+          <div class="kicker"><span class="dot"></span> Independent educational initiative — building real alternatives</div>
+          <h1>Build skills.<br/>Replace barriers.</h1>
+          <p class="sub">
+            CyberNest creates products that help students learn <b>IELTS</b>, <b>SAT</b>, and <b>coding</b> with a structured system —
+            and later guide them through the <b>application process</b> (including essays), without expensive consulting.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#products">View products</a>
+            <a class="btn" href="#about">How CyberNest works</a>
+          </div>
+        </div>
+
+        <aside class="panel" aria-label="CyberNest highlights">
+          <div class="metrics">
+            <div class="metric">
+              <div class="t">Core goal</div>
+              <div class="v">Consulting alternative</div>
+              <div class="s">A clear, step-by-step path from “0” to skills + application readiness.</div>
+            </div>
+            <div class="metric">
+              <div class="t">Learning model</div>
+              <div class="v">Video + Tasks</div>
+              <div class="s">Khan Academy structure + Duolingo-style progression and practice.</div>
+            </div>
+            <div class="metric">
+              <div class="t">Products</div>
+              <div class="v">3 focused projects</div>
+              <div class="s">Education Hub • Earn Centre • Freelagram (links can be added later).</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>About CyberNest</h2>
+          <p>
+            CyberNest is an independent initiative founded to make high-quality guidance accessible.
+            Instead of selling “secrets”, we build systems students can follow and improve through practice.
+          </p>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="box">
+          <h3>What we believe</h3>
+          <p>
+            Students don’t need expensive consultants to succeed. They need a clear roadmap, consistent practice,
+            and tools that turn effort into results.
+          </p>
+        </div>
+        <div class="box">
+          <h3>What we build</h3>
+          <p>
+            Products that combine learning content, tasks, progress tracking, and real-world skill-building —
+            including coding and portfolio-ready work.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section id="products" class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>Products</h2>
+          <p>Three projects developed under CyberNest. Linklar keyin qo‘shiladi — hozircha tugmalar “coming soon”.</p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <!-- Project 1 -->
+        <article class="card">
+          <div class="tag"><span class="mini"></span> Education</div>
+          <h3>CyberNest Education Hub</h3>
+          <p>
+            A structured learning site where students start from zero and progress through IELTS + SAT preparation,
+            while also learning coding as an extracurricular advantage.
+          </p>
+          <ul class="bullets">
+            <li>Video lessons + practice tasks</li>
+            <li>Progress-based learning (Khan/ Duolingo-inspired)</li>
+            <li>Later stage: application process + essay guidance</li>
+          </ul>
+          <div class="row">
+            <button class="ghost" disabled title="Link later">Open website (soon)</button>
+            <a class="ghost" href="#contact">Request early access</a>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card">
+          <div class="tag"><span class="mini"></span> Skills → Income</div>
+          <h3>Earn Centre (EC)</h3>
+          <p>
+            A learning and direction hub for online careers: freelancing, logistics, SMM, and practical skills
+            that can lead to income opportunities.
+          </p>
+          <ul class="bullets">
+            <li>Online professions roadmap</li>
+            <li>Skill pathways and task-based practice</li>
+            <li>Career-first approach for students</li>
+          </ul>
+          <div class="row">
+            <button class="ghost" disabled title="Link later">Open website (soon)</button>
+            <a class="ghost" href="#contact">Partner with EC</a>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="card">
+          <div class="tag"><span class="mini"></span> Portfolio + Connect</div>
+          <h3>Freelagram</h3>
+          <p>
+            A portfolio and discovery platform where people show their work with short videos,
+            build a simple website-like portfolio, and connect via direct messaging.
+          </p>
+          <ul class="bullets">
+            <li>Portfolio pages like a mini-website</li>
+            <li>Short videos to present work (Instagram-like)</li>
+            <li>Find talent, chat, and match with opportunities</li>
+          </ul>
+          <div class="row">
+            <button class="ghost" disabled title="Link later">Open website (soon)</button>
+            <a class="ghost" href="#contact">Join waitlist</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision -->
+  <section id="vision" class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>Vision & Roadmap</h2>
+          <p>CyberNest — bu “company” deb da’vo qilish emas, balki real mahsulotlar chiqaradigan initiative. Keyin rasmiylashtiriladi.</p>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="box">
+          <h3>Stage 1 — MVP</h3>
+          <p>
+            Education Hub’ni minimal versiyada ishga tushirish: IELTS/SAT asosiy modul + tasklar + progress.
+            10–30 real student bilan test.
+          </p>
+        </div>
+        <div class="box">
+          <h3>Stage 2 — Scale</h3>
+          <p>
+            Application/essay bosqichini qo‘shish. EC va Freelagram’ni bir-biriga bog‘lash:
+            skills → portfolio → opportunity.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>Contact</h2>
+          <p>Hozircha kontaktlarni placeholder qildim. Email/Telegram/Instagram qo‘ysangiz, shu yerga ulab berasiz.</p>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="box">
+          <h3>Get in touch</h3>
+          <p>
+            Email: <span class="pill">your-email@domain.com</span><br/>
+            Telegram: <span class="pill">@yourusername</span><br/>
+            Instagram: <span class="pill">@cybernest</span>
+          </p>
+        </div>
+        <div class="box">
+          <h3>Quick note</h3>
+          <p>
+            “CyberNest is an independent initiative.” Bu jumla sizni hozirgi yosh/rasmiy registr masalalaridan
+            xavfsiz qiladi va shu bilan birga professional ko‘rinadi.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="frow">
+        <div>© <span id="year"></span> CyberNest. Built as an independent initiative.</div>
+        <div class="pill">Replace expensive consulting with accessible systems.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
